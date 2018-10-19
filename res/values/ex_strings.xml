@@ -31,4 +31,6 @@
     <string name="misc_category_title">Miscellaneous</string>
     <string name="misc_category_summary">Other options</string>
 
+    <!-- Google Feed -->
+    <string name="settings_feed">Enable Google feed integration</string>
 </resources>
