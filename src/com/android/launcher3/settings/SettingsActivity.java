@@ -73,6 +73,7 @@ public class SettingsActivity extends Activity
     public static final String SAVE_HIGHLIGHTED_KEY = "android:preference_highlighted";
 
     public static final String MINUS_ONE_KEY = "pref_enable_minus_one";
+    private static final String HIDDEN_APPS = "hidden_app";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +94,13 @@ public class SettingsActivity extends Activity
                     .commit();
         }
         Utilities.getPrefs(getApplicationContext()).registerOnSharedPreferenceChangeListener(this);
+
+            Preference hiddenApp = findPreference(Utilities.KEY_HIDDEN_APPS);
+            hiddenApp.setOnPreferenceClickListener(
+                preference -> {
+                    startActivity(new Intent(getActivity(), MultiSelectRecyclerViewActivity.class));
+                    return false;
+            });
     }
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {

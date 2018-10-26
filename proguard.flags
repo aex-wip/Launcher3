@@ -44,6 +44,10 @@
   *;
 }
 
+-keep class com.android.launcher3.MultiSelectRecyclerViewActivity {
+  *;
+}
+
 # Discovery bounce animation
 -keep class com.android.launcher3.allapps.DiscoveryBounce$VerticalProgressWrapper {
   public void setProgress(float);

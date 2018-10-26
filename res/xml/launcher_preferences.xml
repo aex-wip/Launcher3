@@ -74,14 +74,10 @@
         android:defaultValue="normal"
         android:persistent="true" />
 
-    <PreferenceCategory
-        android:key="more"
-        android:title="@string/more">
     <Preference
-        android:key="hidden-app"
+        android:key="hidden_app"
         android:title="@string/hide_app"
         android:summary="@string/hide_app_sum"/>
-    </PreferenceCategory>
 
     <SwitchPreference
         android:key="pref_show_workspace_grad"
