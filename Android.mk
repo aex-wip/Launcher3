@@ -40,19 +40,6 @@ LOCAL_MODULE := LauncherPluginLib
 include $(BUILD_STATIC_JAVA_LIBRARY)
 
 #
-# Prebuilt Google Feed library
-#
-include $(CLEAR_VARS)
-LOCAL_MODULE := libGoogleFeed
-LOCAL_MODULE_TAGS := optional
-LOCAL_PRIVATE_PLATFORM_APIS := true
-LOCAL_MODULE_CLASS := JAVA_LIBRARIES
-LOCAL_SRC_FILES := libs/libGoogleFeed.jar
-LOCAL_UNINSTALLABLE_MODULE := true
-LOCAL_CERTIFICATE := platform
-include $(BUILD_PREBUILT)
-
-#
 # Build rule for Launcher3 dependencies lib.
 #
 include $(CLEAR_VARS)
@@ -100,7 +87,7 @@ LOCAL_STATIC_ANDROID_LIBRARIES := \
     Launcher3CommonDepsLib \
     SecondaryDisplayLauncherLib
 
-LOCAL_STATIC_JAVA_LIBRARIES := libGoogleFeed
+LOCAL_STATIC_ANDROID_LIBRARIES := Launcher3CommonDepsLib
 LOCAL_SRC_FILES := \
     $(call all-java-files-under, src) \
     $(call all-java-files-under, src_shortcuts_overrides) \
@@ -123,6 +110,12 @@ LOCAL_FULL_LIBS_MANIFEST_FILES := $(LOCAL_PATH)/AndroidManifest-common.xml
 
 LOCAL_JACK_COVERAGE_INCLUDE_FILTER := com.android.launcher3.*
 
+LOCAL_AIDL_INCLUDES := src/com/google/android/libraries/launcherclient
+
+LOCAL_SRC_FILES += \
+    src/com/google/android/libraries/launcherclient/ILauncherOverlayCallback.aidl \
+    src/com/google/android/libraries/launcherclient/ILauncherOverlay.aidl
+
 include $(BUILD_PACKAGE)
 
 #
@@ -131,7 +124,6 @@ include $(BUILD_PACKAGE)
 include $(CLEAR_VARS)
 LOCAL_USE_AAPT2 := true
 LOCAL_MODULE_TAGS := optional
-LOCAL_STATIC_JAVA_LIBRARIES := libGoogleFeed
 LOCAL_STATIC_ANDROID_LIBRARIES := Launcher3CommonDepsLib
 
 LOCAL_SRC_FILES := \
@@ -157,6 +149,13 @@ LOCAL_FULL_LIBS_MANIFEST_FILES := \
 
 LOCAL_MANIFEST_FILE := go/AndroidManifest.xml
 LOCAL_JACK_COVERAGE_INCLUDE_FILTER := com.android.launcher3.*
+
+LOCAL_AIDL_INCLUDES := src/com/google/android/libraries/launcherclient
+
+LOCAL_SRC_FILES += \
+    src/com/google/android/libraries/launcherclient/ILauncherOverlayCallback.aidl \
+    src/com/google/android/libraries/launcherclient/ILauncherOverlay.aidl
+
 include $(BUILD_PACKAGE)
 
 #
@@ -168,10 +167,10 @@ LOCAL_AAPT2_ONLY := true
 LOCAL_MODULE_TAGS := optional
 
 ifneq (,$(wildcard frameworks/base))
-  LOCAL_STATIC_JAVA_LIBRARIES := SystemUISharedLib launcherprotosnano libGoogleFeed
+  LOCAL_STATIC_JAVA_LIBRARIES := SystemUISharedLib launcherprotosnano
   LOCAL_PRIVATE_PLATFORM_APIS := true
 else
-  LOCAL_STATIC_JAVA_LIBRARIES := libSharedSystemUI libLauncherProtos libGoogleFeed
+  LOCAL_STATIC_JAVA_LIBRARIES := libSharedSystemUI libLauncherProtos
   LOCAL_SDK_VERSION := system_current
   LOCAL_MIN_SDK_VERSION := 26
 endif
@@ -195,6 +194,13 @@ LOCAL_PROGUARD_ENABLED := disabled
 
 
 LOCAL_MANIFEST_FILE := quickstep/AndroidManifest.xml
+
+LOCAL_AIDL_INCLUDES := src/com/google/android/libraries/launcherclient
+
+LOCAL_SRC_FILES += \
+    src/com/google/android/libraries/launcherclient/ILauncherOverlayCallback.aidl \
+    src/com/google/android/libraries/launcherclient/ILauncherOverlay.aidl
+
 include $(BUILD_STATIC_JAVA_LIBRARY)
 
 #
@@ -209,11 +215,9 @@ LOCAL_PROGUARD_ENABLED := disabled
 
 ifneq (,$(wildcard frameworks/base))
   LOCAL_PRIVATE_PLATFORM_APIS := true
-  LOCAL_STATIC_JAVA_LIBRARIES := libGoogleFeed
 else
   LOCAL_SDK_VERSION := system_current
   LOCAL_MIN_SDK_VERSION := 26
-  LOCAL_STATIC_JAVA_LIBRARIES := libGoogleFeed
 endif
 LOCAL_PACKAGE_NAME := Launcher3QuickStep
 LOCAL_PRIVILEGED_MODULE := true
@@ -232,8 +236,13 @@ LOCAL_FULL_LIBS_MANIFEST_FILES := \
 LOCAL_MANIFEST_FILE := quickstep/AndroidManifest.xml
 LOCAL_JACK_COVERAGE_INCLUDE_FILTER := com.android.launcher3.*
 
-include $(BUILD_PACKAGE)
+LOCAL_AIDL_INCLUDES := src/com/google/android/libraries/launcherclient
 
+LOCAL_SRC_FILES += \
+    src/com/google/android/libraries/launcherclient/ILauncherOverlayCallback.aidl \
+    src/com/google/android/libraries/launcherclient/ILauncherOverlay.aidl
+
+include $(BUILD_PACKAGE)
 
 #
 # Build rule for Launcher3 Go app with quickstep for Android Go devices.
@@ -243,10 +252,10 @@ LOCAL_USE_AAPT2 := true
 LOCAL_MODULE_TAGS := optional
 
 ifneq (,$(wildcard frameworks/base))
-  LOCAL_STATIC_JAVA_LIBRARIES := SystemUISharedLib launcherprotosnano libGoogleFeed
+  LOCAL_STATIC_JAVA_LIBRARIES := SystemUISharedLib launcherprotosnano
   LOCAL_PRIVATE_PLATFORM_APIS := true
 else
-  LOCAL_STATIC_JAVA_LIBRARIES := libSharedSystemUI libLauncherProtos libGoogleFeed
+  LOCAL_STATIC_JAVA_LIBRARIES := libSharedSystemUI libLauncherProtos
   LOCAL_SDK_VERSION := system_current
   LOCAL_MIN_SDK_VERSION := 26
 endif
@@ -326,6 +335,13 @@ LOCAL_FULL_LIBS_MANIFEST_FILES := \
 
 LOCAL_MANIFEST_FILE := quickstep/AndroidManifest.xml
 LOCAL_JACK_COVERAGE_INCLUDE_FILTER := com.android.launcher3.*
+
+LOCAL_AIDL_INCLUDES := src/com/google/android/libraries/launcherclient
+
+LOCAL_SRC_FILES += \
+    src/com/google/android/libraries/launcherclient/ILauncherOverlayCallback.aidl \
+    src/com/google/android/libraries/launcherclient/ILauncherOverlay.aidl
+
 include $(BUILD_PACKAGE)
 
 
