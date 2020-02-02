@@ -52,4 +52,12 @@
     <string name="hotseat_gradient_title">Show gradient on bottom</string>
     <string name="hotseat_gradient_summary">Enable a subtle gradient from the launcher dock</string>
 
+    <!-- Grid -->
+    <string name="grid_division" translatable="false">Grid spacing</string>
+    <string name="grid_division_dense" translatable="false">Dense (6 by 6)</string>
+    <string name="grid_division_normal" translatable="false">Normal (5 by 5)</string>
+    <string name="grid_division_reasonable" translatable="false">Sparse (4 by 5)</string>
+    <string name="grid_division_big" translatable="false">Big (4 by 4)</string>
+    <string name="grid_division_crazybig" translatable="false">Gigantic (3 by 3)</string>
+
 </resources>

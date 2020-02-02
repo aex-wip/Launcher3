@@ -96,7 +96,7 @@ public class SettingsActivity extends Activity
     }
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if (Utilities.SHOW_WORKSPACE_GRADIENT.equals(key) || Utilities.SHOW_HOTSEAT_GRADIENT.equals(key)) {
+        if (Utilities.SHOW_WORKSPACE_GRADIENT.equals(key) || Utilities.SHOW_HOTSEAT_GRADIENT.equals(key) || Utilities.KEY_IDP_GRID_NAME.equals(key)) {
             LauncherAppState.getInstanceNoCreate().setNeedsRestart();
         }
     }
