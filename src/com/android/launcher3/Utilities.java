@@ -137,7 +137,7 @@ public final class Utilities {
 
     public static final String SHOW_WORKSPACE_GRADIENT = "pref_show_workspace_grad";
     public static final String SHOW_HOTSEAT_GRADIENT = "pref_show_hotseat_grad";
-    private static final String KEY_IDP_GRID_NAME = "idp_grid_name";
+    public static final String KEY_IDP_GRID_NAME = "idp_grid_name";
     public static final String KEY_HIDDEN_APPS = "hidden_app";
     public static final String KEY_HIDDEN_APPS_SET = "hidden_app_set";
 
